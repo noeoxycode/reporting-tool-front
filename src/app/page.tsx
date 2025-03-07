@@ -4,7 +4,7 @@ import IndividualForm from "./individual.form";
 export default function Home() {
   return (
     <main className="p-6">
-      <IndividualForm/>
+      <a href="individuals/new">individuals</a>
     </main>
   );
 }
