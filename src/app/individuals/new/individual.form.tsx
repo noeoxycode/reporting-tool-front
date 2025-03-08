@@ -11,29 +11,29 @@ import EntityForm from '@/components/ui/entity-form';
 
 interface Individual {
   id: string;
-  first_name: string;
-  last_name: string;
+  firstName: string;
+  lastName: string;
   dob: Date | null;
   gender: string;
   address: string;
   email: string;
   phone: string;
-  active_status: string;
-  advice_status: string;
+  activeStatus: string;
+  adviceStatus: string;
 }
 
 export default function IndividualForm() {
   const [formData, setFormData] = useState<Individual>({
     id: crypto.randomUUID(),
-    first_name: '',
-    last_name: '',
+    firstName: '',
+    lastName: '',
     dob: null,
     gender: '',
     address: '',
     email: '',
     phone: '',
-    active_status: '',
-    advice_status: '',
+    activeStatus: '',
+    adviceStatus: '',
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,10 +65,10 @@ export default function IndividualForm() {
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
-              <LabelAndInput label={'First Name'} onChange={handleChange} value={formData.first_name}></LabelAndInput>
-              <LabelAndInput label={'Last Name'} onChange={handleChange} value={formData.last_name}></LabelAndInput>
+              <LabelAndInput<Individual> label={'First Name'} name={'firstName'} onChange={handleChange} value={formData.firstName}></LabelAndInput>
+              <LabelAndInput<Individual> label={'Last Name'} name={'lastName'} onChange={handleChange} value={formData.lastName}></LabelAndInput>
             </div>
-            <LabelAndInput type='date' label={'Date of Birth'} onChange={handleChangeDate} value={formData.dob?.toISOString().substring(0,10) || ''}></LabelAndInput>
+            <LabelAndInput<Individual> type='date' label={'Date of Birth'} name={'dob'} onChange={handleChangeDate} value={formData.dob?.toISOString().substring(0,10) || ''}></LabelAndInput>
             <div className='grid w-full max-w-sm items-center gap-1.5'>
               <Label htmlFor="gender">Gender</Label>
               <Select onValueChange={(value) => handleSelectChange('gender', value)}>
@@ -81,12 +81,12 @@ export default function IndividualForm() {
                 </SelectContent>
               </Select>
             </div>
-            <LabelAndInput label={'Address'} onChange={handleChange} value={formData.address}></LabelAndInput>
-            <LabelAndInput type="email" label={'Email'} onChange={handleChange} value={formData.email}></LabelAndInput>
-            <LabelAndInput type="tel" label={'Phone'} onChange={handleChange} value={formData.phone}></LabelAndInput>
+            <LabelAndInput<Individual> label={'Address'} name={'address'} onChange={handleChange} value={formData.address}></LabelAndInput>
+            <LabelAndInput<Individual> type="email" label={'Email'} name={'email'} onChange={handleChange} value={formData.email}></LabelAndInput>
+            <LabelAndInput<Individual> type="tel" label={'Phone'} name={'phone'} onChange={handleChange} value={formData.phone}></LabelAndInput>
             <div className="grid grid-cols-2 gap-4">
-              <LabelAndInput label={'Active Status'} onChange={handleChange} value={formData.active_status}></LabelAndInput>
-              <LabelAndInput label={'Advice Status'} onChange={handleChange} value={formData.advice_status}></LabelAndInput>
+              <LabelAndInput<Individual> label={'Active Status'} name={'activeStatus'} onChange={handleChange} value={formData.activeStatus}></LabelAndInput>
+              <LabelAndInput<Individual> label={'Advice Status'} name={'adviceStatus'} onChange={handleChange} value={formData.adviceStatus}></LabelAndInput>
             </div>
             <Button type="submit" className="w-full">Submit</Button>
           </form>

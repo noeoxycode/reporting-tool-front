@@ -4,11 +4,11 @@ import { cn } from "@/lib/utils"
 import { Input } from "./input"
 import { Label } from "./label"
 
-interface LabelAndInputProps {
+interface LabelAndInputProps<T> {
   className?: string,
   label: string,
   id?: string,
-  name: string,
+  name: keyof T,
   type?: React.HTMLInputTypeAttribute,
   value?: string,
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void,
@@ -16,7 +16,7 @@ interface LabelAndInputProps {
   accept?: string,
 }
 
-function LabelAndInput({
+function LabelAndInput<T>({
   className = "",
   label = "label",
   id,
@@ -26,16 +26,15 @@ function LabelAndInput({
   onChange = () => { },
   isRequired = true,
   accept,
-}: LabelAndInputProps) {
+}: LabelAndInputProps<T>) {
   if (!id) id = label.replace(' ', '_').toLowerCase();
-  if (!name) name = id;
   return (
     <div
       className={cn("grid w-full items-center gap-1.5", className)}
     >
       <Label htmlFor={id}>{label}</Label>
       <Input 
-        id={id} type={type} name={name} onChange={onChange} 
+        id={id} type={type} name={name.toString()} onChange={onChange} 
         value={value} required={isRequired} accept={accept}
       />
     </div>

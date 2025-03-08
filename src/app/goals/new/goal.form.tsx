@@ -72,17 +72,17 @@ export default function GoalForm() {
         <CardHeader><CardTitle>Goal</CardTitle></CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <LabelAndInput label={'Name'} name={'name'}  onChange={handleChange} value={formData.name}></LabelAndInput>
-            <LabelAndInput label={'Type'} name={'type'}  onChange={handleChange} value={formData.type}></LabelAndInput>
+            <LabelAndInput<Goal> label={'Name'} name={'name'}  onChange={handleChange} value={formData.name}></LabelAndInput>
+            <LabelAndInput<Goal> label={'Type'} name={'type'}  onChange={handleChange} value={formData.type}></LabelAndInput>
             <div className="grid grid-cols-2 gap-4">
-              <LabelAndInput type='date' label={'Start Date'} name={'targetDate'} onChange={(e) => handleChangeDate('startDate', e.target.value)} value={formData.startDate?.toISOString().substring(0,10) || ''}></LabelAndInput>
-              <LabelAndInput type='date' label={'Target Date'}  name={'targetDate'}  onChange={(e) => handleChangeDate('targetDate', e.target.value)} value={formData.targetDate?.toISOString().substring(0,10) || ''}></LabelAndInput>
+              <LabelAndInput<Goal> type='date' label={'Start Date'} name={'targetDate'} onChange={(e) => handleChangeDate('startDate', e.target.value)} value={formData.startDate?.toISOString().substring(0,10) || ''}></LabelAndInput>
+              <LabelAndInput<Goal> type='date' label={'Target Date'}  name={'targetDate'}  onChange={(e) => handleChangeDate('targetDate', e.target.value)} value={formData.targetDate?.toISOString().substring(0,10) || ''}></LabelAndInput>
             </div>
-            <LabelAndInput type='number' label={'Amount'} name={'amount'}  onChange={handleChangeNumber} value={formData.amount.toString()}></LabelAndInput>
-            <LabelAndInput label={'Priority'}  name={'priority'}  onChange={handleChange} value={formData.priority}></LabelAndInput>
-            <LabelAndImageInput/>
-            <LabelAndInput label={'Active Status'} name={'activeStatus'} onChange={handleChange} value={formData.activeStatus}></LabelAndInput>
-            <LabelAndInput label={'Advice Status'} name={'adviceStatus'} onChange={handleChange} value={formData.adviceStatus}></LabelAndInput>
+            <LabelAndInput<Goal> type='number' label={'Amount'} name={'amount'}  onChange={handleChangeNumber} value={formData.amount.toString()}></LabelAndInput>
+            <LabelAndInput<Goal> label={'Priority'}  name={'priority'}  onChange={handleChange} value={formData.priority}></LabelAndInput>
+            <LabelAndImageInput<Goal> name='image'/>
+            <LabelAndInput<Goal> label={'Active Status'} name={'activeStatus'} onChange={handleChange} value={formData.activeStatus}></LabelAndInput>
+            <LabelAndInput<Goal> label={'Advice Status'} name={'adviceStatus'} onChange={handleChange} value={formData.adviceStatus}></LabelAndInput>
             <Button type="submit" className="w-full">Submit</Button>
           </form>
         </CardContent>

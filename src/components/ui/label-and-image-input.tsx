@@ -5,17 +5,17 @@ import { Input } from "./input"
 import { Label } from "./label"
 import { LabelAndInput } from "./label-and-input"
 
-interface ImageInputProps{
+interface ImageInputProps<T>{
     id?: string,
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void,
     isRequired?: boolean,
-    name?: string,
+    name: keyof T,
     label?: string,
 }
 
-function LabelAndImageInput({id='image', name='image', label='Image', onChange = () => {}, isRequired = true}: ImageInputProps) {
+function LabelAndImageInput<T>({id='image', name, label='Image', onChange = () => {}, isRequired = true}: ImageInputProps<T>) {
   return (
-    <LabelAndInput
+    <LabelAndInput<T>
       id={id}
       type="file"
       onChange={onChange}
