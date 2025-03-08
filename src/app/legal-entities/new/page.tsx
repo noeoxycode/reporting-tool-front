@@ -1,4 +1,4 @@
-import LegalEntityForm from "@/app/legal-entity.form";
+import LegalEntityForm from "@/app/legal-entities/new/legal-entity.form";
 
 
 export default function NewLegalEntity() {

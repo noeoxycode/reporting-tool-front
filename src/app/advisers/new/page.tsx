@@ -1,4 +1,4 @@
-import AdviserForm from "@/app/adviser.form";
+import AdviserForm from "@/app/advisers/new/adviser.form";
 
 
 export default function NewAdviser() {

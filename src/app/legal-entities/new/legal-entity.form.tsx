@@ -19,20 +19,20 @@ enum LegalEntityType {
 interface LegalEntity {
     name: string;
     type: string;
-    legal_name: string;
-    abn_acn: string;
-    corporate_trustee_name: string;
-    corporate_trustee_abn_acn: string;
+    legalName: string;
+    abnAcn: string;
+    corporateTrusteeName: string;
+    corporateTrusteeAbnAcn: string;
 }
 
 export default function LegalEntityForm() {
     const [formData, setFormData] = useState<LegalEntity>({
         name: '',
         type: '',
-        legal_name: '',
-        abn_acn: '',
-        corporate_trustee_name: '',
-        corporate_trustee_abn_acn: '',
+        legalName: '',
+        abnAcn: '',
+        corporateTrusteeName: '',
+        corporateTrusteeAbnAcn: '',
     });
 
     const [showTrusteeFields, setShowTrusteeFields] = useState(false);
@@ -55,17 +55,17 @@ export default function LegalEntityForm() {
             alert('Type is required');
             return;
         }
-        if (!validateABNACN(formData.abn_acn)) {
+        if (!validateABNACN(formData.abnAcn)) {
             alert('ABN/ACN must be a 9 to 11 digit number');
             return;
         }
         if (showTrusteeFields) {
-            if (formData.corporate_trustee_name || formData.corporate_trustee_abn_acn) {
-                if (!formData.corporate_trustee_name || !formData.corporate_trustee_abn_acn) {
+            if (formData.corporateTrusteeName || formData.corporateTrusteeAbnAcn) {
+                if (!formData.corporateTrusteeName || !formData.corporateTrusteeAbnAcn) {
                     alert('Both Corporate Trustee Name and ABN/ACN must be filled if one is provided');
                     return;
                 }
-                if (!validateABNACN(formData.corporate_trustee_abn_acn)) {
+                if (!validateABNACN(formData.corporateTrusteeAbnAcn)) {
                     alert('Corporate Trustee ABN/ACN must be a 9 to 11 digit number');
                     return;
                 }
@@ -78,8 +78,8 @@ export default function LegalEntityForm() {
         if (!showTrusteeFields) {
             setFormData({
                 ...formData,
-                corporate_trustee_name: '',
-                corporate_trustee_abn_acn: '',
+                corporateTrusteeName: '',
+                corporateTrusteeAbnAcn: '',
             });
         }
     }, [showTrusteeFields]);
@@ -90,7 +90,7 @@ export default function LegalEntityForm() {
                 <CardHeader><CardTitle>Legal Entity</CardTitle></CardHeader>
                 <CardContent>
                     <form onSubmit={handleSubmit} className="space-y-4">
-                        <LabelAndInput label={'Name'} onChange={handleChange} value={formData.name}/>
+                        <LabelAndInput label={'Name'} name={'name'} onChange={handleChange} value={formData.name}/>
                         <div className='grid w-full max-w-sm items-center gap-1.5'>
                             <Label htmlFor="type">Type</Label>
                             <Select onValueChange={handleSelectChange}>
@@ -106,14 +106,14 @@ export default function LegalEntityForm() {
                                 </SelectContent>
                             </Select>
                         </div>
-                        <LabelAndInput label={'Legal Name'} onChange={handleChange} value={formData.legal_name}/>
-                        <LabelAndInput label={'ABN ACN'} onChange={handleChange} value={formData.abn_acn}/>
+                        <LabelAndInput label={'Legal Name'} name={'legalName'} onChange={handleChange} value={formData.legalName}/>
+                        <LabelAndInput label={'ABN ACN'} name={'abnAcn'} onChange={handleChange} value={formData.abnAcn}/>
                         {showTrusteeFields && (
                             <>
-                                <LabelAndInput label={'Corporate Trustee_Name'} onChange={handleChange}
-                                               value={formData.corporate_trustee_name}/>
-                                <LabelAndInput label={'Corporate Trustee_ABN_ACN'} onChange={handleChange}
-                                               value={formData.corporate_trustee_abn_acn}/>
+                                <LabelAndInput label={'Corporate Trustee Name'} name={'corporateTrusteeName'} onChange={handleChange}
+                                               value={formData.corporateTrusteeName}/>
+                                <LabelAndInput label={'Corporate Trustee abnAcn'} name={'corporateTrusteeAbnAcn'} onChange={handleChange}
+                                               value={formData.corporateTrusteeAbnAcn}/>
                             </>
                         )}
 
