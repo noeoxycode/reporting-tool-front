@@ -1,4 +1,4 @@
-interface Individual {
+export interface Individual {
     id: string;
     firstName: string;
     lastName: string;
@@ -9,4 +9,7 @@ interface Individual {
     phone: string;
     activeStatus: string;
     adviceStatus: string;
-  }
+}
+
+export type IndividualCreateInput = Omit<Individual, 'id'>;
+export type IndividualUpdateInput = Partial<Individual>;
