@@ -21,11 +21,11 @@ export default function UpdateForm({ individual }: UpdateFormProps) {
 
     return (
         <div className="bg-white shadow-md rounded-lg p-6">
-            <h2 className="text-xl font-semibold mb-6">Modifier l&apos;individual</h2>
+            <h2 className="text-xl font-semibold mb-6">Modify individual</h2>
             <IndividualForm
                 initialData={individual}
                 onSubmit={handleSubmit}
-                buttonText="Mettre à jour"
+                buttonText="Modify"
             />
         </div>
     );

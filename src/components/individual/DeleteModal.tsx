@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import {deleteIndividual} from "@/lib/api/individual";
+import { deleteIndividual } from "@/lib/api/individual";
 
 interface DeleteModalProps {
     id: string;
@@ -25,7 +25,7 @@ export default function DeleteModal({ id, name, onClose }: DeleteModalProps) {
             onClose();
             router.refresh();
         } catch (err) {
-            setError(err instanceof Error ? err.message : 'Une erreur est survenue');
+            setError(err instanceof Error ? err.message : 'An error occurred');
         } finally {
             setIsDeleting(false);
         }
@@ -35,12 +35,12 @@ export default function DeleteModal({ id, name, onClose }: DeleteModalProps) {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
             <div className="bg-white rounded-lg max-w-md w-full p-6">
                 <h3 className="text-lg font-medium text-gray-900">
-                    Confirmer la suppression
+                    Confirm Deletion
                 </h3>
 
                 <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                        Êtes-vous sûr de vouloir supprimer l&apos;individual {name} ? Cette action est irréversible.
+                        Are you sure you want to delete the individual {name}? This action is irreversible.
                     </p>
                 </div>
 
@@ -57,7 +57,7 @@ export default function DeleteModal({ id, name, onClose }: DeleteModalProps) {
                         onClick={onClose}
                         className="inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
-                        Annuler
+                        Cancel
                     </button>
                     <button
                         type="button"
@@ -65,7 +65,7 @@ export default function DeleteModal({ id, name, onClose }: DeleteModalProps) {
                         onClick={handleDelete}
                         className="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                     >
-                        {isDeleting ? 'Suppression...' : 'Supprimer'}
+                        {isDeleting ? 'Deleting...' : 'Delete'}
                     </button>
                 </div>
             </div>

@@ -10,9 +10,9 @@ export default function CreateIndividualPage() {
             <Link
                 href="/individuals"
             >
-              &larr; Retour à la liste
+              &larr; Back to the list
             </Link>
-            <h1 className="mt-2 text-2xl font-semibold ">Ajouter un nouvel individual</h1>
+            <h1 className="mt-2 text-2xl font-semibold ">Add new individual</h1>
           </div>
 
           <CreateForm />

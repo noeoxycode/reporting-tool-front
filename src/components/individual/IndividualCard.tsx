@@ -28,35 +28,35 @@ export default function IndividualCard({ individual }: IndividualCardProps) {
                             href={`/individuals/${individual.id}`}
                             className={`inline-flex items-center px-3 py-1 text-sm font-medium ${COLORS.text} bg-white border ${COLORS.border} rounded-md hover:bg-gray-50`}
                         >
-                            Voir
+                            View
                         </Link>
                         <Link
                             href={`/individuals/${individual.id}/edit`}
                             className={`inline-flex items-center px-3 py-1 text-sm font-medium text-white ${COLORS.button} border border-transparent rounded-md hover:${COLORS.buttonHover}`}
                         >
-                            Modifier
+                            Edit
                         </Link>
                         <button
                             onClick={() => setShowDeleteModal(true)}
                             className="inline-flex items-center px-3 py-1 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md hover:bg-red-700"
                         >
-                            Supprimer
+                            Delete
                         </button>
                     </div>
                 </div>
 
                 <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
                     <div>
-                        <span className="font-medium text-gray-500">Téléphone:</span> {individual.phone}
+                        <span className="font-medium text-gray-500">Phone:</span> {individual.phone}
                     </div>
                     <div>
-                        <span className="font-medium text-gray-500">Date de naissance:</span> {individual.dob}
+                        <span className="font-medium text-gray-500">Date of Birth:</span> {individual.dob}
                     </div>
                     <div>
-                        <span className="font-medium text-gray-500">Statut:</span> {individual.activeStatus}
+                        <span className="font-medium text-gray-500">Status:</span> {individual.activeStatus}
                     </div>
                     <div>
-                        <span className="font-medium text-gray-500">Conseil:</span> {individual.adviceStatus}
+                        <span className="font-medium text-gray-500">Advice:</span> {individual.adviceStatus}
                     </div>
                 </div>
             </div>

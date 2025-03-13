@@ -17,7 +17,7 @@ export default async function IndividualsPage() {
                         href="/individuals/new"
                         className={`inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white ${COLORS.button} hover:${COLORS.buttonHover}`}
                     >
-                        Ajouter un individual
+                        Add individual
                     </Link>
                 </div>
 
@@ -29,7 +29,7 @@ export default async function IndividualsPage() {
                                 href="/individuals/new"
                                 className={`inline-flex items-center mt-4 px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white ${COLORS.button} hover:${COLORS.buttonHover}`}
                             >
-                                Ajouter votre premier individual
+                                Add your first individual
                             </Link>
                         </div>
                     ) : (
