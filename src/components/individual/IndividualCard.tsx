@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import DeleteModal from './DeleteModal';
 import { Individual } from "@/lib/types/individual";
 import { COLORS } from "@/app/theme";
+import {deleteIndividual} from "@/lib/api/individual";
+import DeleteModal from "@/components/delete-confirmation-modal";
 
 interface IndividualCardProps {
     individual: Individual;
@@ -12,6 +13,11 @@ interface IndividualCardProps {
 
 export default function IndividualCard({ individual }: IndividualCardProps) {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+    const handleDelete = async (id: string) => {
+        await deleteIndividual(id);
+    };
+
 
     return (
         <>
@@ -65,7 +71,11 @@ export default function IndividualCard({ individual }: IndividualCardProps) {
                 <DeleteModal
                     id={individual.id}
                     name={`${individual.firstName} ${individual.lastName}`}
+                    isOpen={showDeleteModal}
                     onClose={() => setShowDeleteModal(false)}
+                    onDelete={handleDelete}
+                    redirectAfterDelete="/individuals"
+                    successMessage="Individual"
                 />
             )}
         </>
