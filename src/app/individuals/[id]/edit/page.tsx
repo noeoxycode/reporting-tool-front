@@ -20,9 +20,8 @@ export default async function EditIndividualPage({ params }: EditPageProps) {
                     <div className="mb-6">
                         <Link
                             href={`/individuals/${params.id}`}
-                            className="text-indigo-600 hover:text-indigo-900"
                         >
-                            &larr; Retour aux détails
+                            &larr; Back to details
                         </Link>
                         <h1 className="mt-2 text-2xl font-semibold text-gray-900">
                             Modifier {individual.firstName} {individual.lastName}
