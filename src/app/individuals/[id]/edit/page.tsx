@@ -25,7 +25,7 @@ export default async function EditIndividualPage(props: EditPageProps) {
                             &larr; Back to details
                         </Link>
                         <h1 className="mt-2 text-2xl font-semibold text-gray-900">
-                            Modifier {individual.firstName} {individual.lastName}
+                            Modify {individual.firstName} {individual.lastName}
                         </h1>
                     </div>
 
