@@ -4,12 +4,13 @@ import { notFound } from 'next/navigation';
 import {getIndividual} from "@/lib/api/individual";
 
 interface DetailPageProps {
-    params: {
+    params: Promise<{
         id: string;
-    };
+    }>;
 }
 
-export default async function IndividualDetailPage({ params }: DetailPageProps) {
+export default async function IndividualDetailPage(props: DetailPageProps) {
+    const params = await props.params;
     try {
         const individual = await getIndividual(params.id);
 

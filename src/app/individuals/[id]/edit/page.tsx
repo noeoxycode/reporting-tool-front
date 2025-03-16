@@ -5,12 +5,13 @@ import UpdateForm from "@/components/individual/UpdateForm";
 import {getIndividual} from "@/lib/api/individual";
 
 interface EditPageProps {
-    params: {
+    params: Promise<{
         id: string;
-    };
+    }>;
 }
 
-export default async function EditIndividualPage({ params }: EditPageProps) {
+export default async function EditIndividualPage(props: EditPageProps) {
+    const params = await props.params;
     try {
         const individual = await getIndividual(params.id);
 

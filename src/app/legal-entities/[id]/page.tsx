@@ -6,16 +6,17 @@ import DeleteButton from "@/components/legal-entity/legal-entity-delete-button";
 import {COLORS} from "@/app/theme";
 
 interface LegalEntityDetailPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export const dynamic = 'force-dynamic';
 
-export default async function LegalEntityDetailPage({ params }: LegalEntityDetailPageProps) {
+export default async function LegalEntityDetailPage(props: LegalEntityDetailPageProps) {
+  const params = await props.params;
   const { id } = params;
-  
+
   try {
     const legalEntity = await getLegalEntityById(id);
 
