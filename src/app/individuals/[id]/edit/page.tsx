@@ -5,12 +5,13 @@ import UpdateForm from "@/components/individual/UpdateForm";
 import {getIndividual} from "@/lib/api/individual";
 
 interface EditPageProps {
-    params: {
+    params: Promise<{
         id: string;
-    };
+    }>;
 }
 
-export default async function EditIndividualPage({ params }: EditPageProps) {
+export default async function EditIndividualPage(props: EditPageProps) {
+    const params = await props.params;
     try {
         const individual = await getIndividual(params.id);
 
@@ -24,7 +25,7 @@ export default async function EditIndividualPage({ params }: EditPageProps) {
                             &larr; Back to details
                         </Link>
                         <h1 className="mt-2 text-2xl font-semibold text-gray-900">
-                            Modifier {individual.firstName} {individual.lastName}
+                            Modify {individual.firstName} {individual.lastName}
                         </h1>
                     </div>
 

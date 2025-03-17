@@ -3,12 +3,13 @@ import Link from 'next/link';
 import UpdateLegalEntityForm from "@/components/legal-entity/legal-entity-update-form";
 
 interface EditLegalEntityPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
-export default function EditLegalEntityPage({ params }: EditLegalEntityPageProps) {
+export default async function EditLegalEntityPage(props: EditLegalEntityPageProps) {
+  const params = await props.params;
   const { id } = params;
 
   return (
