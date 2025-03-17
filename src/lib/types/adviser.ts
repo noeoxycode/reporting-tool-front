@@ -7,6 +7,7 @@ export interface Adviser {
     mobile: string;
     email: string;
     representativeNumber: string;
+    activeStatus: string;
 }
 
 export type AdviserCreateInput = Omit<Adviser, 'id'>;

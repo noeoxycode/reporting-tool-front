@@ -3,6 +3,7 @@
 import React, { useState, FormEvent } from 'react';
 import { AdviserCreateInput, Adviser } from "@/lib/types/adviser";
 import { COLORS } from "@/app/theme";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 interface AdviserFormProps {
     initialData?: Adviser;
@@ -18,7 +19,8 @@ export default function AdviserForm({ initialData, onSubmit, buttonText }: Advis
         address: initialData?.address || '',
         email: initialData?.email || '',
         mobile: initialData?.mobile || '',
-        representativeNumber: initialData?.representativeNumber || ''
+        representativeNumber: initialData?.representativeNumber || '',
+        activeStatus: initialData?.activeStatus || 'Active', // Added activeStatus with default value
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -29,6 +31,14 @@ export default function AdviserForm({ initialData, onSubmit, buttonText }: Advis
         setFormData(prev => ({
             ...prev,
             [name]: value
+        }));
+    };
+
+    // Handle status change from Select component
+    const handleStatusChange = (value: string) => {
+        setFormData(prev => ({
+            ...prev,
+            activeStatus: value
         }));
     };
 
@@ -136,7 +146,7 @@ export default function AdviserForm({ initialData, onSubmit, buttonText }: Advis
                     />
                 </div>
 
-                <div className="md:col-span-2">
+                <div>
                     <label htmlFor="representativeNumber" className={labelClass}>
                         Representative Number
                     </label>
@@ -149,6 +159,25 @@ export default function AdviserForm({ initialData, onSubmit, buttonText }: Advis
                         required
                         className={inputClass}
                     />
+                </div>
+
+                <div>
+                    <label htmlFor="activeStatus" className={labelClass}>
+                        Active Status
+                    </label>
+                    <Select
+                        value={formData.activeStatus}
+                        onValueChange={handleStatusChange}
+                    >
+                        <SelectTrigger className={inputClass}>
+                            <SelectValue placeholder="Select status" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Active">Active</SelectItem>
+                            <SelectItem value="Inactive">Inactive</SelectItem>
+                            <SelectItem value="On Hold">On Hold</SelectItem>
+                        </SelectContent>
+                    </Select>
                 </div>
             </div>
 

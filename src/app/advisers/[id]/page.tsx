@@ -86,6 +86,18 @@ export default async function AdviserDetailPage({ params }: DetailPageProps) {
                                         {adviser.address}
                                     </dd>
                                 </div>
+                                <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                    <dt className="text-sm font-medium text-gray-500">Status</dt>
+                                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                                                <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
+                                                                    adviser.activeStatus === 'Active' ? 'bg-green-100 text-green-800' :
+                                                                        adviser.activeStatus === 'Inactive' ? 'bg-red-100 text-red-800' :
+                                                                            'bg-yellow-100 text-yellow-800'
+                                                                }`}>
+                            {adviser.activeStatus ?? "Unknown"}
+                        </span>
+                                    </dd>
+                                </div>
                             </dl>
                         </div>
                     </div>

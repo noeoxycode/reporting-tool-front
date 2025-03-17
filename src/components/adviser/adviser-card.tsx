@@ -1,10 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import {useState} from 'react';
 import Link from 'next/link';
-import { Adviser } from "@/lib/types/adviser";
-import { COLORS } from "@/app/theme";
-import { deleteAdviser } from "@/lib/api/adviser";
+import {Adviser} from "@/lib/types/adviser";
+import {COLORS} from "@/app/theme";
+import {deleteAdviser} from "@/lib/api/adviser";
 import DeleteModal from "@/components/delete-confirmation-modal";
 import {UserIcon} from "lucide-react";
 
@@ -12,7 +12,7 @@ interface AdviserCardProps {
     adviser: Adviser;
 }
 
-export default function AdviserCard({ adviser }: AdviserCardProps) {
+export default function AdviserCard({adviser}: AdviserCardProps) {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
 
     const handleDelete = async (id: string) => {
@@ -24,7 +24,8 @@ export default function AdviserCard({ adviser }: AdviserCardProps) {
             <div className={`bg-white shadow rounded-lg p-6 hover:shadow-md transition-shadow ${COLORS.border}`}>
                 <div className="flex justify-between items-start">
                     <div className="flex items-center">
-                        <div className="flex-shrink-0 h-12 w-12 rounded-full bg-gray-100 flex items-center justify-center mr-4">
+                        <div
+                            className="flex-shrink-0 h-12 w-12 rounded-full bg-gray-100 flex items-center justify-center mr-4">
                             {adviser.image ? (
                                 <img
                                     src={adviser.image}
@@ -32,7 +33,7 @@ export default function AdviserCard({ adviser }: AdviserCardProps) {
                                     className="h-10 w-10 rounded-full"
                                 />
                             ) : (
-                                <UserIcon className="h-6 w-6 text-gray-400" />
+                                <UserIcon className="h-6 w-6 text-gray-400"/>
                             )}
                         </div>
                         <div>
@@ -69,10 +70,21 @@ export default function AdviserCard({ adviser }: AdviserCardProps) {
                         <span className="font-medium text-gray-500">Mobile:</span> {adviser.mobile}
                     </div>
                     <div>
-                        <span className="font-medium text-gray-500">Representative Number:</span> {adviser.representativeNumber}
+                        <span
+                            className="font-medium text-gray-500">Representative Number:</span> {adviser.representativeNumber}
                     </div>
                     <div className="col-span-2">
                         <span className="font-medium text-gray-500">Address:</span> {adviser.address}
+                    </div>
+                    <div>
+                        <span className="font-medium text-gray-500">Status:</span>{' '}
+                        <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
+                            adviser.activeStatus === 'Active' ? 'bg-green-100 text-green-800' :
+                                adviser.activeStatus === 'Inactive' ? 'bg-red-100 text-red-800' :
+                                    'bg-yellow-100 text-yellow-800'
+                        }`}>
+                            {adviser.activeStatus ?? "Unknown"}
+                        </span>
                     </div>
                 </div>
             </div>
