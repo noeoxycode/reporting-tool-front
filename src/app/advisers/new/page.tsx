@@ -1,5 +1,4 @@
 import { COLORS } from "@/app/theme";
-import AdviserForm from "@/components/adviser/adviser-form";
 import CreateForm from "@/components/adviser/create-adviser-form";
 
 export default function NewAdviserPage() {

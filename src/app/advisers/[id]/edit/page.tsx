@@ -5,9 +5,11 @@ import UpdateForm from "@/components/adviser/update-adviser-form";
 
 export const dynamic = 'force-dynamic';
 
-export default async function EditAdviserPage({ params }: { params: { id: string } }) {
+
+export default async function EditAdviserPage({ params }: { params: Promise<{ id: string }> }) {
     try {
-        const adviser = await getAdviser(params.id);
+        const paramsAwaited = await params;
+        const adviser = await getAdviser(paramsAwaited.id);
 
         return (
             <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">

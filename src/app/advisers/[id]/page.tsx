@@ -1,19 +1,20 @@
-// app/advisers/[id]/page.tsx
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import { getAdviser } from "@/lib/api/adviser";
+import {notFound} from 'next/navigation';
+import {getAdviser} from "@/lib/api/adviser";
 import {UserIcon} from "lucide-react";
 import {COLORS} from "@/app/theme";
 
+
 interface DetailPageProps {
-    params: {
+    params: Promise<{
         id: string;
-    };
+    }>;
 }
 
-export default async function AdviserDetailPage({ params }: DetailPageProps) {
+export default async function AdviserDetailPage({params}: DetailPageProps) {
     try {
-        const adviser = await getAdviser(params.id);
+        const paramsAwaited = await params;
+        const adviser = await getAdviser(paramsAwaited.id);
 
         return (
             <div className="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8">
@@ -53,7 +54,7 @@ export default async function AdviserDetailPage({ params }: DetailPageProps) {
                                 {adviser.image && (
                                     <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt className="text-sm font-medium text-gray-500">Photo</dt>
-                                        <UserIcon className="h-6 w-6 text-gray-400" />
+                                        <UserIcon className="h-6 w-6 text-gray-400"/>
                                     </div>
                                 )}
                                 <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -89,11 +90,12 @@ export default async function AdviserDetailPage({ params }: DetailPageProps) {
                                 <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                     <dt className="text-sm font-medium text-gray-500">Status</dt>
                                     <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                                                <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
-                                                                    adviser.activeStatus === 'Active' ? 'bg-green-100 text-green-800' :
-                                                                        adviser.activeStatus === 'Inactive' ? 'bg-red-100 text-red-800' :
-                                                                            'bg-yellow-100 text-yellow-800'
-                                                                }`}>
+                                                                <span
+                                                                    className={`px-2 py-0.5 rounded-full text-xs font-medium ${
+                                                                        adviser.activeStatus === 'Active' ? 'bg-green-100 text-green-800' :
+                                                                            adviser.activeStatus === 'Inactive' ? 'bg-red-100 text-red-800' :
+                                                                                'bg-yellow-100 text-yellow-800'
+                                                                    }`}>
                             {adviser.activeStatus ?? "Unknown"}
                         </span>
                                     </dd>
