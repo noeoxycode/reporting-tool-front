@@ -3,7 +3,7 @@ import { getAdvisers } from "@/lib/api/adviser";
 import { COLORS } from "@/app/theme";
 import AdviserCard from "@/components/adviser/adviser-card";
 
-export const dynamic = 'force-dynamic'; // Pour s'assurer que la page est toujours à jour
+export const dynamic = 'force-dynamic';
 
 export default async function AdvisersPage() {
     const advisers = await getAdvisers();

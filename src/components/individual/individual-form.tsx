@@ -1,4 +1,3 @@
-// app/components/individuals/IndividualForm.tsx
 'use client';
 
 import React, { useState, FormEvent } from 'react';

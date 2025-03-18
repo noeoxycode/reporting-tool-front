@@ -1,4 +1,4 @@
-import CreateForm from "@/components/individual/CreateForm";
+import CreateForm from "@/components/individual/create-form";
 import Link from "next/link";
 
 

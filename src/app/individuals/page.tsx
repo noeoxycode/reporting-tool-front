@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import IndividualCard from "@/components/individual/IndividualCard";
+import IndividualCard from "@/components/individual/individual-card";
 import { getIndividuals } from "@/lib/api/individual";
 import { COLORS } from "@/app/theme";
 
-export const dynamic = 'force-dynamic'; // Pour s'assurer que la page est toujours à jour
+export const dynamic = 'force-dynamic';
 
 export default async function IndividualsPage() {
     const individuals = await getIndividuals();

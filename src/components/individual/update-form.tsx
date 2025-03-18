@@ -1,8 +1,7 @@
-// app/components/individuals/UpdateForm.tsx
 'use client';
 
 import { useRouter } from 'next/navigation';
-import IndividualForm from './IndividualForm';
+import IndividualForm from './individual-form';
 import {Individual, IndividualCreateInput} from "@/lib/types/individual";
 import {updateIndividual} from "@/lib/api/individual";
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import IndividualForm from './IndividualForm';
+import IndividualForm from './individual-form';
 import { IndividualCreateInput } from "@/lib/types/individual";
 import { createIndividual } from "@/lib/api/individual";
 
