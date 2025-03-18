@@ -119,7 +119,7 @@ export default async function IndividualDetailPage(props: DetailPageProps) {
                 </div>
             </div>
         );
-    } catch (error) {
+    } catch {
         return notFound();
     }
 }

@@ -92,7 +92,7 @@ export default async function LegalEntityDetailPage(props: LegalEntityDetailPage
         </div>
       </div>
     );
-  } catch (error) {
+  } catch {
     notFound();
   }
 }

@@ -106,7 +106,7 @@ export default async function AdviserDetailPage({params}: DetailPageProps) {
                 </div>
             </div>
         );
-    } catch (error) {
+    } catch {
         return notFound();
     }
 }

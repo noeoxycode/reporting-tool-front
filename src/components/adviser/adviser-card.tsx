@@ -7,6 +7,7 @@ import {COLORS} from "@/app/theme";
 import {deleteAdviser} from "@/lib/api/adviser";
 import DeleteModal from "@/components/delete-confirmation-modal";
 import {UserIcon} from "lucide-react";
+import Image from "next/image";
 
 interface AdviserCardProps {
     adviser: Adviser;
@@ -27,7 +28,9 @@ export default function AdviserCard({adviser}: AdviserCardProps) {
                         <div
                             className="flex-shrink-0 h-12 w-12 rounded-full bg-gray-100 flex items-center justify-center mr-4">
                             {adviser.image ? (
-                                <img
+                                <Image
+                                    width={40}
+                                    height={40}
                                     src={adviser.image}
                                     alt={`${adviser.firstName} ${adviser.lastName}`}
                                     className="h-10 w-10 rounded-full"

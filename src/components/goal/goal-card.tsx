@@ -7,6 +7,7 @@ import {COLORS} from "@/app/theme";
 import {deleteGoal} from "@/lib/api/goal";
 import DeleteModal from "@/components/delete-confirmation-modal";
 import {TargetIcon} from "lucide-react";
+import Image from "next/image";
 
 interface GoalCardProps {
     goal: Goal;
@@ -30,7 +31,9 @@ export default function GoalCard({goal}: GoalCardProps) {
                         <div
                             className="flex-shrink-0 h-12 w-12 rounded-full bg-gray-100 flex items-center justify-center mr-4">
                             {goal.image ? (
-                                <img
+                                <Image
+                                    width={40}
+                                    height={40}
                                     src={goal.image}
                                     alt={goal.name}
                                     className="h-10 w-10 rounded-full"

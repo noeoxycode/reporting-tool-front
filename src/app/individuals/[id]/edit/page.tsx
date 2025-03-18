@@ -32,7 +32,7 @@ export default async function EditIndividualPage(props: EditPageProps) {
                 </div>
             </div>
         );
-    } catch (error) {
+    } catch {
         return notFound();
     }
 }
