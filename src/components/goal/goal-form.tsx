@@ -47,7 +47,7 @@ export default function GoalForm({initialData, onSubmit, buttonText}: GoalFormPr
                 toast.success(
                     initialData ? "Goal updated successfully" : "Goal created successfully",
                 );
-                router.refresh(); // Refresh the current route
+                router.refresh();
             } catch (error) {
                 toast.error(
                     error instanceof Error ? error.message : "An error occurred",
@@ -84,7 +84,6 @@ export default function GoalForm({initialData, onSubmit, buttonText}: GoalFormPr
         {value: "Received", label: "Received"},
     ];
 
-    // Define reusable class names
     const labelClass = `block text-sm font-medium ${COLORS.text} mb-2`;
     const errorClass = `text-sm text-red-500 mt-1`;
 
@@ -99,7 +98,6 @@ export default function GoalForm({initialData, onSubmit, buttonText}: GoalFormPr
             <CardContent>
                 <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {/* Goal Name Field */}
                         <div className="md:col-span-2">
                             <label htmlFor="name" className={labelClass}>Goal Name</label>
                             <Input
@@ -110,7 +108,6 @@ export default function GoalForm({initialData, onSubmit, buttonText}: GoalFormPr
                             {errors.name && <p className={errorClass}>{errors.name.message}</p>}
                         </div>
 
-                        {/* Goal Type Field */}
                         <div>
                             <label htmlFor="type" className={labelClass}>Goal Type</label>
                             <Controller
@@ -139,7 +136,6 @@ export default function GoalForm({initialData, onSubmit, buttonText}: GoalFormPr
                             {errors.type && <p className={errorClass}>{errors.type.message}</p>}
                         </div>
 
-                        {/* Amount Field */}
                         <div>
                             <label htmlFor="amount" className={labelClass}>Target Amount ($)</label>
                             <Input
@@ -156,7 +152,6 @@ export default function GoalForm({initialData, onSubmit, buttonText}: GoalFormPr
                             {errors.amount && <p className={errorClass}>{errors.amount.message}</p>}
                         </div>
 
-                        {/* Start Date Field */}
                         <div>
                             <label htmlFor="startDate" className={labelClass}>Start Date</label>
                             <Input
@@ -168,7 +163,6 @@ export default function GoalForm({initialData, onSubmit, buttonText}: GoalFormPr
                             {errors.startDate && <p className={errorClass}>{errors.startDate.message}</p>}
                         </div>
 
-                        {/* Target Date Field */}
                         <div>
                             <label htmlFor="targetDate" className={labelClass}>Target Date</label>
                             <Input
@@ -180,7 +174,6 @@ export default function GoalForm({initialData, onSubmit, buttonText}: GoalFormPr
                             {errors.targetDate && <p className={errorClass}>{errors.targetDate.message}</p>}
                         </div>
 
-                        {/* Priority Field */}
                         <div>
                             <label htmlFor="priority" className={labelClass}>Priority</label>
                             <Controller
@@ -208,7 +201,6 @@ export default function GoalForm({initialData, onSubmit, buttonText}: GoalFormPr
                             {errors.priority && <p className={errorClass}>{errors.priority.message}</p>}
                         </div>
 
-                        {/* Active Status Field */}
                         <div>
                             <label htmlFor="activeStatus" className={labelClass}>Active Status</label>
                             <Controller
@@ -236,7 +228,6 @@ export default function GoalForm({initialData, onSubmit, buttonText}: GoalFormPr
                             {errors.activeStatus && <p className={errorClass}>{errors.activeStatus.message}</p>}
                         </div>
 
-                        {/* Advice Status Field */}
                         <div>
                             <label htmlFor="adviceStatus" className={labelClass}>Advice Status</label>
                             <Controller

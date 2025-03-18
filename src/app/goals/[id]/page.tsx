@@ -15,7 +15,6 @@ export default async function GoalDetailPage({params}: DetailPageProps) {
         const paramsAwaited = await params;
         const goal = await getGoal(paramsAwaited.id);
 
-        // Format dates for display
         const formattedStartDate = new Date(goal.startDate).toLocaleDateString();
         const formattedTargetDate = new Date(goal.targetDate).toLocaleDateString();
 

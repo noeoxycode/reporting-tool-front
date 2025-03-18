@@ -19,7 +19,6 @@ export default function GoalCard({goal}: GoalCardProps) {
         await deleteGoal(id);
     };
 
-    // Format dates for display
     const formattedStartDate = new Date(goal.startDate).toLocaleDateString();
     const formattedTargetDate = new Date(goal.targetDate).toLocaleDateString();
 

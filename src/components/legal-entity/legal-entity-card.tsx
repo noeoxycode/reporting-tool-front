@@ -1,4 +1,3 @@
-// app/components/legal-entity/LegalEntityCard.tsx
 import Link from 'next/link';
 import { LegalEntity } from '@/lib/types/legal-entity';
 import { COLORS } from '@/app/theme';
@@ -9,7 +8,6 @@ interface LegalEntityCardProps {
 }
 
 export default function LegalEntityCard({ legalEntity }: LegalEntityCardProps) {
-  // Determine status color
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'Active':
@@ -23,7 +21,6 @@ export default function LegalEntityCard({ legalEntity }: LegalEntityCardProps) {
     }
   };
 
-  // Determine advice status color
   const getAdviceStatusColor = (status: string) => {
     switch (status) {
       case 'Advised':

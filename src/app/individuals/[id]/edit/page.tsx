@@ -1,4 +1,3 @@
-// app/individuals/[id]/edit/page.tsx
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import UpdateForm from "@/components/individual/update-form";

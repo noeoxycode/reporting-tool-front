@@ -1,4 +1,3 @@
-// app/components/legal-entity/DeleteButton.tsx
 'use client';
 
 import { useState } from 'react';

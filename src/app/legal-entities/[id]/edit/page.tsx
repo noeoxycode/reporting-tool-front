@@ -1,4 +1,3 @@
-// app/legal-entity/[id]/edit/page.tsx
 import Link from 'next/link';
 import UpdateLegalEntityForm from "@/components/legal-entity/legal-entity-update-form";
 

@@ -89,7 +89,6 @@ export default function LegalEntityForm({ initialData, onSubmit, buttonText }: L
         );
     }, [formData.type]);
 
-    // Validate form whenever form data changes
     useEffect(() => {
         validateForm();
     }, [formData, showTrusteeFields]);
