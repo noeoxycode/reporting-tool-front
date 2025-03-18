@@ -1,4 +1,3 @@
-// app/legal-entity/layout.tsx
 import type { Metadata } from 'next';
 import React from "react";
 

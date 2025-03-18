@@ -1,4 +1,3 @@
-// app/components/DeleteModal.tsx
 'use client';
 
 import { useState } from 'react';

@@ -1,7 +1,5 @@
-// app/legal-entity/all/page.tsx
 import Link from 'next/link';
 import { getAllLegalEntities } from '@/lib/api/legal-entity';
-import DeleteButton from "@/components/legal-entity/legal-entity-delete-button";
 
 export const dynamic = 'force-dynamic';
 

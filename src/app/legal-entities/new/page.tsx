@@ -1,4 +1,3 @@
-// app/legal-entity/new/page.tsx
 
 import CreateLegalEntityForm from "@/components/legal-entity/legal-entity-create-form";
 

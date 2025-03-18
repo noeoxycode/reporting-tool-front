@@ -1,4 +1,3 @@
-// app/individuals/[id]/edit/page.tsx
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import UpdateForm from "@/components/individual/update-form";
@@ -33,7 +32,7 @@ export default async function EditIndividualPage(props: EditPageProps) {
                 </div>
             </div>
         );
-    } catch (error) {
+    } catch {
         return notFound();
     }
 }

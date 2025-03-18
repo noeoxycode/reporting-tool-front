@@ -20,7 +20,7 @@ export default function AdviserForm({ initialData, onSubmit, buttonText }: Advis
         email: initialData?.email || '',
         mobile: initialData?.mobile || '',
         representativeNumber: initialData?.representativeNumber || '',
-        activeStatus: initialData?.activeStatus || 'Active', // Added activeStatus with default value
+        activeStatus: initialData?.activeStatus || 'Active',
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -34,7 +34,6 @@ export default function AdviserForm({ initialData, onSubmit, buttonText }: Advis
         }));
     };
 
-    // Handle status change from Select component
     const handleStatusChange = (value: string) => {
         setFormData(prev => ({
             ...prev,
@@ -56,7 +55,6 @@ export default function AdviserForm({ initialData, onSubmit, buttonText }: Advis
         }
     };
 
-    // Input field class with extracted color variables
     const inputClass = `mt-1 block w-full px-3 py-2 border ${COLORS.border} rounded-md shadow-sm focus:outline-none ${COLORS.focus}`;
     const labelClass = `block text-sm font-medium ${COLORS.text}`;
     const errorClass = `${COLORS.error.bg} border ${COLORS.error.border} ${COLORS.error.text} px-4 py-3 rounded`;

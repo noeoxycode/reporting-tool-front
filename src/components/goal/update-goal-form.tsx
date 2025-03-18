@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import {Goal, GoalCreateInput, GoalUpdateInput} from "@/lib/types/goal";
+import {Goal, GoalCreateInput} from "@/lib/types/goal";
 import GoalForm from "@/components/goal/goal-form";
 import {updateGoal} from "@/lib/api/goal";
 

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, FormEvent, useEffect } from 'react';
+import React, {useState, FormEvent, useEffect, useCallback} from 'react';
 import { LegalEntityCreateInput, LegalEntity, LegalEntityType } from "@/lib/types/legal-entity";
 import {
     Card,
@@ -69,7 +69,7 @@ export default function LegalEntityForm({ initialData, onSubmit, buttonText }: L
     const [showTrusteeFields, setShowTrusteeFields] = useState(false);
     const [isFormValid, setIsFormValid] = useState(false);
 
-    const validateForm = () => {
+    const validateForm = useCallback(() => {
         const baseFieldsValid =
             formData.name.trim() !== '' &&
             formData.legalName.trim() !== '' &&
@@ -80,7 +80,7 @@ export default function LegalEntityForm({ initialData, onSubmit, buttonText }: L
                 formData.corporateTrusteeAbnAcn?.trim() !== '');
 
         setIsFormValid(baseFieldsValid && trusteeFieldsValid);
-    };
+    }, [formData, showTrusteeFields]);
 
     useEffect(() => {
         setShowTrusteeFields(
@@ -89,10 +89,9 @@ export default function LegalEntityForm({ initialData, onSubmit, buttonText }: L
         );
     }, [formData.type]);
 
-    // Validate form whenever form data changes
     useEffect(() => {
         validateForm();
-    }, [formData, showTrusteeFields]);
+    }, [formData, showTrusteeFields, validateForm]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;

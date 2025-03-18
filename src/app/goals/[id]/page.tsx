@@ -3,6 +3,7 @@ import {notFound} from 'next/navigation';
 import {getGoal} from "@/lib/api/goal";
 import {TargetIcon} from "lucide-react";
 import {COLORS} from "@/app/theme";
+import Image from "next/image";
 
 interface DetailPageProps {
     params: Promise<{
@@ -15,7 +16,6 @@ export default async function GoalDetailPage({params}: DetailPageProps) {
         const paramsAwaited = await params;
         const goal = await getGoal(paramsAwaited.id);
 
-        // Format dates for display
         const formattedStartDate = new Date(goal.startDate).toLocaleDateString();
         const formattedTargetDate = new Date(goal.targetDate).toLocaleDateString();
 
@@ -58,7 +58,7 @@ export default async function GoalDetailPage({params}: DetailPageProps) {
                                     <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt className="text-sm font-medium text-gray-500">Image</dt>
                                         <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                            <img src={goal.image} alt={goal.name} className="h-16 w-16 rounded-full" />
+                                            <Image width={40} height={40} src={goal.image} alt={goal.name} className="h-16 w-16 rounded-full" />
                                         </dd>
                                     </div>
                                 )}
@@ -138,7 +138,7 @@ export default async function GoalDetailPage({params}: DetailPageProps) {
                 </div>
             </div>
         );
-    } catch (error) {
+    } catch {
         return notFound();
     }
 }

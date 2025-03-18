@@ -19,7 +19,7 @@ export default async function EditGoalPage({ params }: { params: Promise<{ id: s
                 </div>
             </div>
         );
-    } catch (error) {
+    } catch {
         return notFound();
     }
 }

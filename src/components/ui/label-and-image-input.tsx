@@ -1,8 +1,5 @@
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
-import { Input } from "./input"
-import { Label } from "./label"
 import { LabelAndInput } from "./label-and-input"
 
 interface ImageInputProps<T>{
@@ -13,7 +10,7 @@ interface ImageInputProps<T>{
     label?: string,
 }
 
-function LabelAndImageInput<T>({id='image', name, label='Image', onChange = () => {}, isRequired = true}: ImageInputProps<T>) {
+function LabelAndImageInput<T>({id='image', name, label='Image', onChange = () => {},}: ImageInputProps<T>) {
   return (
     <LabelAndInput<T>
       id={id}

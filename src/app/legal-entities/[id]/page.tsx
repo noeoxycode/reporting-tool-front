@@ -1,4 +1,3 @@
-// app/legal-entity/[id]/page.tsx
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getLegalEntityById } from '@/lib/api/legal-entity';
@@ -93,7 +92,7 @@ export default async function LegalEntityDetailPage(props: LegalEntityDetailPage
         </div>
       </div>
     );
-  } catch (error) {
+  } catch {
     notFound();
   }
 }

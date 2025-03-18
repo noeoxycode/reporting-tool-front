@@ -1,4 +1,3 @@
-// app/components/legal-entity/create-form.tsx
 'use client';
 
 import { useRouter } from 'next/navigation';

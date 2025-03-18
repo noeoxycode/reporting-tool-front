@@ -1,4 +1,3 @@
-// app/components/legal-entity/update-form.tsx
 'use client';
 
 import { useRouter } from 'next/navigation';

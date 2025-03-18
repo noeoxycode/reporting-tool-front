@@ -19,7 +19,7 @@ export default async function EditAdviserPage({ params }: { params: Promise<{ id
                 </div>
             </div>
         );
-    } catch (error) {
+    } catch {
         return notFound();
     }
 }

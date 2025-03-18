@@ -48,7 +48,6 @@ export default function IndividualForm({ initialData, onSubmit, buttonText }: In
         }
     };
 
-    // Input field class with extracted color variables
     const inputClass = `mt-1 block w-full px-3 py-2 border ${COLORS.border} rounded-md shadow-sm focus:outline-none ${COLORS.focus}`;
     const labelClass = `block text-sm font-medium ${COLORS.text}`;
     const errorClass = `${COLORS.error.bg} border ${COLORS.error.border} ${COLORS.error.text} px-4 py-3 rounded`;
