@@ -7,6 +7,7 @@ export default function Home() {
             <li><a href="legal-entities">legal entities</a></li>
             <li><a href="goals">goals</a></li>
             <li><a href="other-users/new">other users</a></li>
+            <li><a href="households">household</a></li>
         </ul>
     </main>
   );

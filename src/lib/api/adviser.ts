@@ -1,7 +1,7 @@
 import {Adviser, AdviserCreateInput, AdviserUpdateInput} from "@/lib/types/adviser";
 
 export async function getAdvisers(): Promise<Adviser[]> {
-    const res = await fetch('https://3zrs0rymo5.execute-api.eu-west-3.amazonaws.com/Prod/advisers');
+    const res = await fetch('http://127.0.0.1:3000/advisers');
 
     if (!res.ok) {
         throw new Error('Erreur lors de la récupération des advisers');
@@ -11,7 +11,7 @@ export async function getAdvisers(): Promise<Adviser[]> {
 }
 
 export async function getAdviser(id: string): Promise<Adviser> {
-    const res = await fetch(`https://3zrs0rymo5.execute-api.eu-west-3.amazonaws.com/Prod/adviser/${id}`);
+    const res = await fetch(`http://127.0.0.1:3000/adviser/${id}`);
 
     if (!res.ok) {
         throw new Error(`Erreur lors de la récupération de l'adviser ${id}`);
@@ -21,7 +21,7 @@ export async function getAdviser(id: string): Promise<Adviser> {
 }
 
 export async function createAdviser(data: AdviserCreateInput): Promise<Adviser> {
-    const res = await fetch('https://3zrs0rymo5.execute-api.eu-west-3.amazonaws.com/Prod/adviser', {
+    const res = await fetch('http://127.0.0.1:3000/adviser', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ export async function createAdviser(data: AdviserCreateInput): Promise<Adviser> 
 }
 
 export async function updateAdviser(id: string, data: AdviserUpdateInput): Promise<void> {
-    const res = await fetch(`https://3zrs0rymo5.execute-api.eu-west-3.amazonaws.com/Prod/adviser/${id}`, {
+    const res = await fetch(`http://127.0.0.1:3000/adviser/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ export async function updateAdviser(id: string, data: AdviserUpdateInput): Promi
 }
 
 export async function deleteAdviser(id: string): Promise<void> {
-    const res = await fetch(`https://3zrs0rymo5.execute-api.eu-west-3.amazonaws.com/Prod/adviser/${id}`, {
+    const res = await fetch(`http://127.0.0.1:3000/adviser/${id}`, {
         method: 'DELETE',
     });
 

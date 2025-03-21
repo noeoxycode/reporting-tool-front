@@ -1,7 +1,7 @@
 import {Individual, IndividualCreateInput, IndividualUpdateInput} from "@/lib/types/individual";
 
 export async function getIndividuals(): Promise<Individual[]> {
-    const res = await fetch('https://3zrs0rymo5.execute-api.eu-west-3.amazonaws.com/Prod/individuals');
+    const res = await fetch('http://127.0.0.1:3000/individuals');
 
     if (!res.ok) {
         throw new Error('Erreur lors de la récupération des individuals');
@@ -11,7 +11,7 @@ export async function getIndividuals(): Promise<Individual[]> {
 }
 
 export async function getIndividual(id: string): Promise<Individual> {
-    const res = await fetch(`https://3zrs0rymo5.execute-api.eu-west-3.amazonaws.com/Prod/individual/${id}`);
+    const res = await fetch(`http://127.0.0.1:3000/individual/${id}`);
 
     if (!res.ok) {
         throw new Error(`Erreur lors de la récupération de l'individual ${id}`);
@@ -21,7 +21,7 @@ export async function getIndividual(id: string): Promise<Individual> {
 }
 
 export async function createIndividual(data: IndividualCreateInput): Promise<Individual> {
-    const res = await fetch('https://3zrs0rymo5.execute-api.eu-west-3.amazonaws.com/Prod/individual', {
+    const res = await fetch('http://127.0.0.1:3000/individual', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ export async function createIndividual(data: IndividualCreateInput): Promise<Ind
 }
 
 export async function updateIndividual(id: string, data: IndividualUpdateInput): Promise<void> {
-    const res = await fetch(`https://3zrs0rymo5.execute-api.eu-west-3.amazonaws.com/Prod/individual/${id}`, {
+    const res = await fetch(`http://127.0.0.1:3000/individual/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ export async function updateIndividual(id: string, data: IndividualUpdateInput):
 }
 
 export async function deleteIndividual(id: string): Promise<void> {
-    const res = await fetch(`https://3zrs0rymo5.execute-api.eu-west-3.amazonaws.com/Prod/individual/${id}`, {
+    const res = await fetch(`http://127.0.0.1:3000/individual/${id}`, {
         method: 'DELETE',
     });
 

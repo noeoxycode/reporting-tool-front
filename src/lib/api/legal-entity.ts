@@ -1,6 +1,6 @@
 import { LegalEntity, LegalEntityCreateInput } from '@/lib/types/legal-entity';
 
-const BASE_URL = 'https://3zrs0rymo5.execute-api.eu-west-3.amazonaws.com/Prod';
+const BASE_URL = 'http://127.0.0.1:3000';
 
 export async function createLegalEntity(data: LegalEntityCreateInput): Promise<LegalEntity> {
   const response = await fetch(BASE_URL + "/legal-entity", {
