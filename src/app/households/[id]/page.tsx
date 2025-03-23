@@ -112,7 +112,7 @@ export default async function HouseholdDetailPage({ params }: DetailPageProps) {
                                 Ownership percentage among different individuals.
                             </p>
                         </div>
-                        <div className="border-t border-gray-200 px-4 py-5 sm:p-6">
+                        <div className="border-t border-gray-200 px-4 py-4">
                             <OwnershipChart
                                 ownershipData={ownershipData}
                                 colorsArray={COLORS_ARRAY}
