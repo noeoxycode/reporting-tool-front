@@ -11,7 +11,7 @@ export default function CreateHouseholdForm() {
     const handleSubmit = async (data: HouseholdCreateInput) => {
         console.log(data);
         await createHousehold(data);
-        router.push('/household');
+        router.push('/households');
         router.refresh();
     };
 
