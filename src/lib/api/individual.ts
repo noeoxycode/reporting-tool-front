@@ -16,7 +16,7 @@ export async function getIndividual(id: string): Promise<Individual> {
     if (!res.ok) {
         throw new Error(`Erreur lors de la récupération de l'individual ${id}`);
     }
-
+    console.log(res);
     return res.json();
 }
 

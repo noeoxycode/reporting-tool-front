@@ -13,7 +13,6 @@ export default async function IndividualDetailPage(props: DetailPageProps) {
     const params = await props.params;
     try {
         const individual = await getIndividual(params.id);
-
         return (
             <div className="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8">
                 <div className="px-4 sm:px-0">
@@ -111,6 +110,21 @@ export default async function IndividualDetailPage(props: DetailPageProps) {
                     }`}>
                       {individual.adviceStatus}
                     </span>
+                                    </dd>
+                                </div>
+                                <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                    <dt className="text-sm font-medium text-gray-500">Adviser</dt>
+                                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                        {individual.individualAdviserRelation?.adviser ? (
+                                            <a
+                                                href={`/advisers/${individual.individualAdviserRelation.adviser.id}`}
+                                                className="hover:underline hover:text-blue-600 transition-colors duration-200 cursor-pointer font-medium"
+                                            >
+                                                {`${individual.individualAdviserRelation.adviser.firstName} ${individual.individualAdviserRelation.adviser.lastName}`}
+                                            </a>
+                                        ) : (
+                                            <span className="text-gray-500 italic">Aucun conseiller assigné</span>
+                                        )}
                                     </dd>
                                 </div>
                             </dl>
