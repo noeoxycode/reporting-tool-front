@@ -1,8 +1,11 @@
 'use client';
 
-import React, { useState, FormEvent } from 'react';
-import {IndividualCreateInput, Individual} from "@/lib/types/individual";
-import {COLORS} from "@/app/theme";
+import React, { useState, useEffect, FormEvent } from 'react';
+import { IndividualCreateInput, Individual } from "@/lib/types/individual";
+import { COLORS } from "@/app/theme";
+import { IndividualAdviserRelation } from "@/lib/types/relations/individual-adviser-relation";
+import {getAdvisers} from "@/lib/api/adviser";
+import {Adviser} from "@/lib/types/adviser";
 
 interface IndividualFormProps {
     initialData?: Individual;
@@ -20,18 +23,43 @@ export default function IndividualForm({ initialData, onSubmit, buttonText }: In
         email: initialData?.email || '',
         phone: initialData?.phone || '',
         activeStatus: initialData?.activeStatus || 'Active',
-        adviceStatus: initialData?.adviceStatus || 'Pending'
+        adviceStatus: initialData?.adviceStatus || 'Pending',
+        individualAdviserRelation: initialData?.individualAdviserRelation || { adviserId: '', individualId: '', adviser: null, individual: null } as IndividualAdviserRelation
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [advisers, setAdvisers] = useState<Adviser[]>([]);
+
+    useEffect(() => {
+        const fetchAdvisers = async () => {
+            try {
+                const data = await getAdvisers();
+                setAdvisers(data);
+            } catch (err) {
+                console.error("Error fetching advisers:", err);
+            }
+        };
+        fetchAdvisers();
+    }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
+        setFormData(prev => {
+            if (name === 'adviserId') {
+                return {
+                    ...prev,
+                    individualAdviserRelation: {
+                        ...prev.individualAdviserRelation,
+                        adviserId: value || '',
+                        individualId: prev.individualAdviserRelation?.individualId || '',
+                        adviser: prev.individualAdviserRelation?.adviser || null,
+                        individual: prev.individualAdviserRelation?.individual || null,
+                    }
+                };
+            }
+            return { ...prev, [name]: value };
+        });
     };
 
     const handleSubmit = async (e: FormEvent) => {
@@ -204,6 +232,23 @@ export default function IndividualForm({ initialData, onSubmit, buttonText }: In
                         <option value="Advised">Advised</option>
                         <option value="Pending">Pending</option>
                         <option value="Not Required">Not Required</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label htmlFor="adviserId" className={labelClass}>Select Adviser</label>
+                    <select
+                        id="adviserId"
+                        name="adviserId"
+                        value={formData.individualAdviserRelation?.adviserId}
+                        onChange={handleChange}
+                        required
+                        className={inputClass}
+                    >
+                        <option value="">Choose an adviser</option>
+                        {advisers.map((adviser) => (
+                            <option key={adviser.id} value={adviser.id}>{adviser.firstName} {adviser.lastName}</option>
+                        ))}
                     </select>
                 </div>
             </div>
