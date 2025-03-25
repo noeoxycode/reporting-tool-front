@@ -1,3 +1,5 @@
+import {IndividualAdviserRelation} from "@/lib/types/relations/individual-adviser-relation";
+
 export interface Adviser {
     id: string;
     firstName: string;
@@ -8,6 +10,7 @@ export interface Adviser {
     email: string;
     representativeNumber: string;
     activeStatus: string;
+    individualAdviserRelations: IndividualAdviserRelation[] | null;
 }
 
 export type AdviserCreateInput = Omit<Adviser, 'id'>;
