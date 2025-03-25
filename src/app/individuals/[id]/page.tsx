@@ -123,7 +123,7 @@ export default async function IndividualDetailPage(props: DetailPageProps) {
                                                 {`${individual.individualAdviserRelation.adviser.firstName} ${individual.individualAdviserRelation.adviser.lastName}`}
                                             </a>
                                         ) : (
-                                            <span className="text-gray-500 italic">Aucun conseiller assigné</span>
+                                            <span className="text-gray-500 italic">No adviser assigned</span>
                                         )}
                                     </dd>
                                 </div>
