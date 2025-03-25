@@ -4,7 +4,6 @@ import {getAdviser} from "@/lib/api/adviser";
 import {UserIcon} from "lucide-react";
 import {COLORS} from "@/app/theme";
 
-
 interface DetailPageProps {
     params: Promise<{
         id: string;
@@ -30,7 +29,7 @@ export default async function AdviserDetailPage({params}: DetailPageProps) {
                         </h1>
                     </div>
 
-                    <div className="bg-white shadow overflow-hidden rounded-lg">
+                    <div className="bg-white shadow overflow-hidden rounded-lg mb-6">
                         <div className="px-4 py-5 sm:px-6 flex justify-between">
                             <div>
                                 <h3 className="text-lg leading-6 font-medium text-gray-900">
@@ -90,19 +89,58 @@ export default async function AdviserDetailPage({params}: DetailPageProps) {
                                 <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                     <dt className="text-sm font-medium text-gray-500">Status</dt>
                                     <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                                                <span
-                                                                    className={`px-2 py-0.5 rounded-full text-xs font-medium ${
-                                                                        adviser.activeStatus === 'Active' ? 'bg-green-100 text-green-800' :
-                                                                            adviser.activeStatus === 'Inactive' ? 'bg-red-100 text-red-800' :
-                                                                                'bg-yellow-100 text-yellow-800'
-                                                                    }`}>
-                            {adviser.activeStatus ?? "Unknown"}
-                        </span>
+                                        <span
+                                            className={`px-2 py-0.5 rounded-full text-xs font-medium ${
+                                                adviser.activeStatus === 'Active' ? 'bg-green-100 text-green-800' :
+                                                    adviser.activeStatus === 'Inactive' ? 'bg-red-100 text-red-800' :
+                                                        'bg-yellow-100 text-yellow-800'
+                                            }`}>
+                                            {adviser.activeStatus ?? "Unknown"}
+                                        </span>
                                     </dd>
                                 </div>
                             </dl>
                         </div>
                     </div>
+
+                    {adviser.individualAdviserRelations && adviser.individualAdviserRelations.length > 0 && (
+                        <div className="bg-white shadow overflow-hidden rounded-lg">
+                            <div className="px-4 py-5 sm:px-6">
+                                <h3 className="text-lg leading-6 font-medium text-gray-900">
+                                    Linked Individuals
+                                </h3>
+                                <p className="mt-1 max-w-2xl text-sm text-gray-500">
+                                    List of individuals associated with this adviser.
+                                </p>
+                            </div>
+                            <div className="border-t border-gray-200">
+                                <ul className="divide-y divide-gray-200">
+                                    {adviser.individualAdviserRelations.map((relation) => (
+                                        <li key={relation.individualId} className="px-4 py-4 sm:px-6">
+                                            <div className="flex items-center justify-between">
+                                                <div className="flex-1 min-w-0">
+                                                    <p className="text-sm font-medium text-gray-900 truncate">
+                                                        {relation.individual?.firstName} {relation.individual?.lastName}
+                                                    </p>
+                                                    <p className="text-sm text-gray-500 truncate">
+                                                        {relation.individual?.email}
+                                                    </p>
+                                                </div>
+                                                <div>
+                                                    <Link
+                                                        href={`/individuals/${relation.individualId}`}
+                                                        className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 hover:bg-blue-200"
+                                                    >
+                                                        View Details
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
         );
