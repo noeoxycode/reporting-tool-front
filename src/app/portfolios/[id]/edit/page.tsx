@@ -1,0 +1,25 @@
+import { getPortfolio } from "@/lib/api/portfolio";
+import { COLORS } from "@/app/theme";
+import { notFound } from "next/navigation";
+import UpdateForm from "@/components/portfolio/update-portfolio-form";
+
+export const dynamic = 'force-dynamic';
+
+
+export default async function EditPortfolioPage({ params }: { params: Promise<{ id: string }> }) {
+    try {
+        const paramsAwaited = await params;
+        const portfolio = await getPortfolio(paramsAwaited.id);
+
+        return (
+            <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                <div className="px-4 sm:px-0">
+                    <h1 className={`text-2xl font-semibold mb-6 ${COLORS.text}`}>Edit Portfolio</h1>
+                    <UpdateForm portfolio={portfolio} />
+                </div>
+            </div>
+        );
+    } catch {
+        return notFound();
+    }
+}

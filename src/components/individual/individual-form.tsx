@@ -242,7 +242,6 @@ export default function IndividualForm({ initialData, onSubmit, buttonText }: In
                         name="adviserId"
                         value={formData.individualAdviserRelation?.adviserId}
                         onChange={handleChange}
-                        required
                         className={inputClass}
                     >
                         <option value="">Choose an adviser</option>
