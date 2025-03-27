@@ -9,6 +9,7 @@ export default function Home() {
             <li><a href="other-users/new">other users</a></li>
             <li><a href="households">household</a></li>
             <li><a href="portfolios">portfolio</a></li>
+            <li><a href="individual-assets">Individual asset</a></li>
         </ul>
     </main>
   );
