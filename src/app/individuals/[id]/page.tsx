@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import {getIndividual} from "@/lib/api/individual";
 import {COLORS} from "@/app/theme";
+import {UserIcon} from "lucide-react";
 
 interface DetailPageProps {
     params: Promise<{
@@ -130,6 +131,74 @@ export default async function IndividualDetailPage(props: DetailPageProps) {
                             </dl>
                         </div>
                     </div>
+
+                    {individual.householdIndividualRelations && individual.householdIndividualRelations.length > 0 && (
+                        <div className="mt-8 bg-white shadow overflow-hidden rounded-lg">
+                            <div className="px-4 py-5 sm:px-6">
+                                <h3 className="text-lg leading-6 font-medium text-gray-900">
+                                    Household Ownership
+                                </h3>
+                                <p className="mt-1 max-w-2xl text-sm text-gray-500">
+                                    Households where this individual has an ownership share
+                                </p>
+                            </div>
+                            <div className="border-t border-gray-200">
+                                <ul className="divide-y divide-gray-200">
+                                    {individual.householdIndividualRelations.map((relation) => (
+                                        <li key={relation.id} className="px-4 py-4 sm:px-6">
+                                            <div className="flex items-center justify-between">
+                                                <div className="flex items-center space-x-4">
+                                                    {relation.household?.image ? (
+                                                        <img
+                                                            src={relation.household.image}
+                                                            alt={relation.household.name}
+                                                            className="h-10 w-10 rounded-full"
+                                                        />
+                                                    ) : (
+                                                        <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
+                                                            <UserIcon className="h-6 w-6 text-gray-400"/>
+                                                        </div>
+                                                    )}
+                                                    <div>
+                                                        <Link
+                                                            href={`/households/${relation.householdId}`}
+                                                            className="text-sm font-medium text-gray-900 hover:underline"
+                                                        >
+                                                            {relation.household?.name || 'Unnamed Household'}
+                                                        </Link>
+                                                        <p className="text-sm text-gray-500">
+                                                            Ownership: {relation.ownershipPercentage}%
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div className="flex items-center space-x-2">
+                                                    <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                                                        relation.household?.activeStatus === 'active'
+                                                            ? 'bg-green-100 text-green-800'
+                                                            : relation.household?.activeStatus === 'inactive'
+                                                                ? 'bg-red-100 text-red-800'
+                                                                : 'bg-yellow-100 text-yellow-800'
+                                                    }`}>
+                                                        {relation.household?.activeStatus}
+                                                    </span>
+                                                    <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                                                        relation.household?.adviceStatus === 'Advised'
+                                                            ? 'bg-blue-100 text-blue-800'
+                                                            : relation.household?.adviceStatus === 'pending'
+                                                                ? 'bg-yellow-100 text-yellow-800'
+                                                                : 'bg-gray-100 text-gray-800'
+                                                    }`}>
+                                                        {relation.household?.adviceStatus}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    )}
+
                 </div>
             </div>
         );
