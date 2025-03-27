@@ -77,11 +77,11 @@ export default function HouseholdForm({ initialData, onSubmit, buttonText }: Hou
             relations: [
                 ...prev.relations,
                 {
-                    id: '', // Will be assigned by backend
-                    householdId: initialData?.id || '', // Will be assigned by backend
+                    id: '',
+                    householdId: initialData?.id || '',
                     individualId: '',
                     ownershipPercentage: 0
-                }
+                } as HouseholdIndividualRelation
             ]
         }));
     };

@@ -24,7 +24,8 @@ export default function IndividualForm({ initialData, onSubmit, buttonText }: In
         phone: initialData?.phone || '',
         activeStatus: initialData?.activeStatus || 'Active',
         adviceStatus: initialData?.adviceStatus || 'Pending',
-        individualAdviserRelation: initialData?.individualAdviserRelation || { adviserId: '', individualId: '', adviser: null, individual: null } as IndividualAdviserRelation
+        individualAdviserRelation: initialData?.individualAdviserRelation || { adviserId: '', individualId: '', adviser: null, individual: null } as IndividualAdviserRelation,
+        householdIndividualRelations: initialData?.householdIndividualRelations || [],
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);

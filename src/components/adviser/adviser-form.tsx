@@ -21,6 +21,7 @@ export default function AdviserForm({ initialData, onSubmit, buttonText }: Advis
         mobile: initialData?.mobile || '',
         representativeNumber: initialData?.representativeNumber || '',
         activeStatus: initialData?.activeStatus || 'Active',
+        individualAdviserRelations: initialData?.individualAdviserRelations || []
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);

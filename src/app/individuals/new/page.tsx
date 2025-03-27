@@ -1,4 +1,4 @@
-import CreateForm from "@/components/individual/create-form";
+import CreateIndividualForm from "@/components/individual/create-individual-form";
 import Link from "next/link";
 
 
@@ -15,7 +15,7 @@ export default function CreateIndividualPage() {
             <h1 className="mt-2 text-2xl font-semibold ">Add new individual</h1>
           </div>
 
-          <CreateForm />
+          <CreateIndividualForm />
         </div></div>
   );
 }

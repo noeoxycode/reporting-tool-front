@@ -5,7 +5,7 @@ import IndividualForm from './individual-form';
 import { IndividualCreateInput } from "@/lib/types/individual";
 import { createIndividual } from "@/lib/api/individual";
 
-export default function CreateForm() {
+export default function CreateIndividualForm() {
     const router = useRouter();
 
     const handleSubmit = async (data: IndividualCreateInput) => {
